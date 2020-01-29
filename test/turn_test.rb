@@ -10,4 +10,10 @@ class TurnTest < Minitest::Test
     turn = Turn.new("Juneau", card)
     assert_instance_of Turn, turn
   end
+
+  def test_if_it_returns_card
+    card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    turn = Turn.new("Juneau", card)
+    assert_equal card, turn.card
+  end
 end
