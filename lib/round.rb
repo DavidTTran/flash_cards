@@ -1,5 +1,5 @@
 class Round
-  attr_reader :deck, :turns, :number_correct, :correct_by_category, :total_number_of_cards
+  attr_reader :deck, :turns, :number_correct
 
   def initialize(deck)
     @deck = deck
