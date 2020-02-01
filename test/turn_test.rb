@@ -14,25 +14,20 @@ class TurnTest < Minitest::Test
     assert_instance_of Turn, @turn
   end
 
-  def test_if_it_returns_card
+  def test_turn_card_attributes
     assert_equal @card, @turn.card
-  end
-
-  def test_guess_method
     assert_equal "Juneau", @turn.guess
   end
 
-  def test_if_guess_equals_answer
+  def test_guess_is_correct?
     assert_equal true, @turn.correct?
-  end
-
-  def test_feedback
     assert_equal "Correct!", @turn.feedback
   end
 
   def test_guess
     card = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
     turn = Turn.new("Saturn", card)
+
     assert_equal "Saturn", turn.guess
   end
 
@@ -40,11 +35,6 @@ class TurnTest < Minitest::Test
     card = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
     turn = Turn.new("Saturn", card)
     assert_equal false, turn.correct?
-  end
-
-  def test_incorrect_feedback
-    card = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
-    turn = Turn.new("Saturn", card)
     assert_equal "Incorrect.", turn.feedback
   end
 end
