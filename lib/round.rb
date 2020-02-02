@@ -53,21 +53,15 @@ class Round
     while @turns.count != total_number_of_cards
       puts "-" * 50
       puts "This is card number #{card_counter} out of #{total_number_of_cards}."
-      puts "Question: #{@deck.cards[0].question}"
+      puts "Question: #{current_card.question}"
       guess = gets.chomp.downcase
-      if guess == @deck.cards[0].answer
-        puts "Correct!"
-        card_counter += 1
-      else
-        puts "Incorrect."
-        card_counter += 1
-      end
       take_turn(guess)
+      @turns.last.feedback
     end
     puts ("-" * 20) + "Game over!" + ("-" * 20)
     puts "You had #{@number_correct} correct guesses out of #{total_number_of_cards} for a total score of #{percent_correct}%."
 
-    puts "STEM - #{(number_correct_by_category(:STEM).to_f / cards_in_category(:STEM).count) * 100}% correct"
+    puts "STEM - #{(number_correct_by_category("STEM").to_f / cards_in_category("STEM").count) * 100}% correct"
 
     puts "Turing Staff - #{(number_correct_by_category("Turing Staff").to_f / cards_in_category("Turing Staff").count) * 100}% correct"
 
